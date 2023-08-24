@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Management</title>
+  <style>/* Estilos globais */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos do cabeçalho */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Estilos do formulário */
+form {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos da tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Estilos dos títulos das tabelas */
+h2 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+</style>
+</head>
+
+<body>
+  <h1>Gerenciar empregados</h1>
+
+  <!-- Formulário para adicionar um novo empregado -->
+  <h2>Adicionar Empregado</h2>
+  <form action="/adicionar" method="POST">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required><br>
+    <label for="salario_bruto">Salário Bruto:</label>
+    <input type="number" id="salario_bruto" name="salario_bruto" step="0.01" required><br>
+    <label for="departamento">Departamento:</label>
+    <select id="departamento" name="departamento" required>
+      <option value="1">Administrativo</option>
+      <option value="2">Designer</option>
+      <option value="3">Contabil</option>
+      <option value="4">Fábrica</option>
+    </select><br>
+    <button type="submit">Adicionar</button>
+  </form>
+<a href="/listar">
+Lista de empregados
+</a>
+<br>
+<a href="/search">
+pesquisas
+</a>
+</body>
+</html>

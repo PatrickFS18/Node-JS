@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perguntas sobre Funcionários</title>
+  <style> <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+
+    p, li {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    form {
+      display: flex;
+      align-items: center;
+    }
+
+    input[type="text"] {
+      padding: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 5px 10px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      display: flex;
+      justify-content: space-between;
+      border: 1px solid #ccc;
+      padding: 10px;
+      background-color: #fff;
+    }
+
+    ul li:nth-child(odd) {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <h1>Perguntas sobre Funcionários</h1>
+
+  <!-- Quem ganha o maior salário -->
+  <h2>Quem ganha o maior salário?</h2>
+  <p id="highestSalary">{{highestSalary}}</p>
+
+  <!-- Quem ganha o menor salário -->
+  <h2>Quem ganha o menor salário?</h2>
+  <p id="lowestSalary">{{lowestSalary}}</p>
+
+  <!-- Pesquisar nome por pedaço de nome -->
+  <h2>Pesquisar nome por pedaço de nome</h2>
+  <form action="/searchBy" method="POST">
+    <input type="text" name="name" placeholder="Digite um pedaço do nome">
+    <button type="submit">Pesquisar</button>
+  </form>
+
+
+    
+
+  <ul>
+    {{#each searchResults}}
+      <li>{{this.nome}}</li>
+    {{/each}}
+  </ul>
+
+  <!-- Classificar pelo setor de trabalho -->
+  <h2>Classificar pelo setor de trabalho</h2>
+  <ul>
+    {{#each sortedByDepartment}}
+    <li>{{this.nome}} - {{this.departamento}}</li>
+    {{/each}}
+  </ul>
+
+  <!-- Quantos trabalham no setor administrativo? -->
+  <h2>Quantos trabalham no setor administrativo?</h2>
+  <p id="adminCount">{{adminCount}} funcionários</p>
+</body>
+</html>
