@@ -93,10 +93,11 @@
   <!-- Classificar pelo setor de trabalho -->
   <h2>Classificar pelo setor de trabalho</h2>
   <ul>
-    {{#each sortedByDepartment}}
-    <li>{{this.nome}} - {{this.departamento}}</li>
-    {{/each}}
-  </ul>
+    <ul>
+  {{#each sortedByDepartment}}
+    <li>{{this.nome}} - {{this.departmentName}}</li>
+  {{/each}}
+</ul>
 
   <!-- Quantos trabalham no setor administrativo? -->
   <h2>Quantos trabalham no setor administrativo?</h2>
