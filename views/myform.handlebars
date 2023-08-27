@@ -6,10 +6,13 @@
   <title>Employee Management</title>
   <style>/* Estilos globais */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-  margin: 0;
-  padding: 0;
+    display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
 }
 
 .container {
@@ -87,6 +90,19 @@ h2 {
   margin-top: 40px;
   margin-bottom: 20px;
 }
+ a {
+      text-decoration: none;
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+      background-color: #0056b3;
+    }
 </style>
 </head>
 
@@ -107,7 +123,7 @@ h2 {
       <option value="3">Contabil</option>
       <option value="4">Fábrica</option>
     </select><br>
-    <button type="submit">Adicionar</button>
+    <button type="submit" style="margin-left:35%">Adicionar</button>
   </form>
 <a href="/listar">
 Lista de empregados

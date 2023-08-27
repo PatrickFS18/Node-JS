@@ -93,12 +93,18 @@ exports.showAllQuestions = (req, res) => {
             };
           });
 
-          // Renderiza a página com os resultados de todas as consultas
-          res.render("search", {
-            highestSalary: highestPaidEmployee.nome,
-            lowestSalary: lowestPaidEmployee.nome,
-            adminCount: adminCount,
-            sortedByDepartment: departmentsWithNames,
+          // Agora, vamos buscar todos os funcionários com o salário mais baixo
+          Employee.findAll({
+            where: { salario_bruto: lowestPaidEmployee.salario_bruto },
+          }).then((employeesWithLowestSalary) => {
+            // Renderiza a página com os resultados de todas as consultas
+            res.render("search", {
+              highestSalary: highestPaidEmployee.nome,
+              lowestSalary: lowestPaidEmployee.nome,
+              adminCount: adminCount,
+              sortedByDepartment: departmentsWithNames,
+              employeesWithLowestSalary: employeesWithLowestSalary,
+            });
           });
         });
       });
@@ -128,7 +134,11 @@ exports.searchByName = (req, res) => {
       nome: { [Sequelize.Op.like]: `%${partialName}%` },
     },
   }).then((employees) => {
+    // Mapear os nomes dos funcionários para um array
+    const employeeNames = employees.map(employee => employee.nome);
+
     // Renderiza a página com os resultados da pesquisa
-    res.render("search", { searchResults: employees.nome });
+    res.render("search", { searchResults: employeeNames });
   });
 };
+
