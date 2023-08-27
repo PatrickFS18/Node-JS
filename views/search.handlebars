@@ -80,17 +80,17 @@
 
   <!-- Pesquisar nome por pedaço de nome -->
   <h2>Pesquisar nome por pedaço de nome</h2>
-  <form action="/searchBy" method="POST">
-    <input type="text" name="name" placeholder="Digite um pedaço do nome">
+  <form action="/searchBy" method="post">
+    <input type="text" name="nome" placeholder="Digite um pedaço do nome">
     <button type="submit">Pesquisar</button>
   </form>
 
-
+  
     
 
   <ul>
     {{#each searchResults}}
-      <li>{{this}}</li>
+      <li>{{this.nome}}</li>
     {{/each}}
   </ul>
 

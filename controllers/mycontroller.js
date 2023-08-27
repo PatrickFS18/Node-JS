@@ -1,6 +1,7 @@
 const { sequelize, Sequelize } = require("../config/connection"); // Certifique-se de importar Sequelize
 const Employee = require("../models/employee")(sequelize, Sequelize); // Passando os parâmetros necessários
 const { calculateIRF } = require("../utils");
+const { Op } = Sequelize;
 
 // Resto do código do controller...
 
@@ -126,19 +127,19 @@ function getDepartmentName(departmentValue) {
 }
 
 exports.searchByName = (req, res) => {
-  const partialName = req.query.name;
-
-  // Consulta para encontrar funcionários por pedaço de nome
-  Employee.findAll({
-    where: {
-      nome: { [Sequelize.Op.like]: `%${partialName}%` },
-    },
-  }).then((employees) => {
-    // Mapear os nomes dos funcionários para um array
-    const employeeNames = employees.map(employee => employee.nome);
-
-    // Renderiza a página com os resultados da pesquisa
-    res.render("search", { searchResults: employeeNames });
-  });
+  const query = `%${req.body.nome}%`;
+  Employee
+    .findAll({
+      where: {
+        nome: { [Op.like]: query },
+      },
+      order: [["id", "ASC"]],
+    })
+    .then((employeeNames) => {
+      res.render("search", { searchResults: employeeNames });
+    })
+    .catch((err) => {
+      console.log("Error" + err);
+      res.status(500).send({ message: "Error" + err.message });
+    });
 };
-
