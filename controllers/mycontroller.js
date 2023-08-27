@@ -15,7 +15,7 @@ exports.listarEmpregados = (req, res) => {
       employees = employees.map((employee) => {
         const inss = employee.salario_bruto * 0.11;
         const irpf = calculateIRF(employee.salario_bruto);
-        const salario_liquido = employee.salario_bruto - inss - irpf;
+        const salario_liquido = (employee.salario_bruto - inss - irpf).toFixed(2);
 
         employee.salario_liquido = salario_liquido;
 
